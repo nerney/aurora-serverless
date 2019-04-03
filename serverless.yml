@@ -1,0 +1,47 @@
+service: aurora-serverless
+frameworkVersion: ">=1.28.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: go1.x
+  memorySize: 256
+# you can add statements to the Lambda function's IAM Role here
+#  iamRoleStatements:
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:ListBucket"
+#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
+#    - Effect: "Allow"
+#      Action:
+#        - "s3:PutObject"
+#      Resource:
+#        Fn::Join:
+#          - ""
+#          - - "arn:aws:s3:::"
+#            - "Ref" : "ServerlessDeploymentBucket"
+#            - "/*"
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
+
+functions:
+  fetch:
+    handler: bin/fetch
+    events:
+      - http:
+          path: fetch
+          method: get
+#resources:
+#  Resources:
+#
+# This is where we would put all the CloudFormation needed
+#  to provision the Aurora Serverless cluster. It's a bit of
+#  a chore because of all the pieces, so for now, we will use
+#  a cluster created from the console.
