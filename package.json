@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "aurora-serverless",
+  "scripts": {
+    "deploy": "serverless deploy -v"
+  },
+  "devDependencies": {
+    "serverless": "^1.40.0",
+    "serverless-prune-plugin": "^1.3.2"
+  }
+}
