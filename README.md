@@ -1,2 +1,3 @@
 # aurora-serverless
-Serverless framework with Aurora Serverless
+
+This poc will use Serverless Framework with Golang on AWS with an Aurora Serverless database.
